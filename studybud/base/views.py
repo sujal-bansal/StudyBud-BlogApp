@@ -13,6 +13,10 @@ User = get_user_model()
 name = "Create"
 
 def loginPage(request):
+    user = get_user_model()
+    superusers = User.objects.filter(is_superuser = True)
+    for user in superusers:
+        print(f" Username -----------------------------------------------------------------------: {user.username} {user.email}")
     page = "login"
     if request.user.is_authenticated:
         return redirect('home')
